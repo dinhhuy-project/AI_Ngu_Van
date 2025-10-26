@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-t8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thầy/Cô Ngữ Văn AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0"
+  }
+}
+</script>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+  .leaves-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .leaves-area span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: animate 10s linear infinite;
+  }
+  .leaves-area span:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background: rgba(34, 197, 94, 0.7);
+    border-radius: 0% 50%;
+    animation: rotate 10s linear infinite;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(110vh);
+    }
+  }
+  @keyframes rotate {
+     0% {
+      transform: rotate(0) translateX(0);
+    }
+    25% {
+      transform: rotate(120deg) translateX(100px);
+    }
+    50% {
+      transform: rotate(240deg) translateX(20px);
+    }
+    100% {
+      transform: rotate(360deg) translateX(0);
+    }
+  }
+  .leaves-area span:nth-of-type(2) { animation-delay: 2s; }
+  .leaves-area span:nth-of-type(3) { animation-delay: 5s; }
+  .leaves-area span:nth-of-type(4) { animation-delay: 8s; }
+  .leaves-area span:nth-of-type(5) { animation-delay: 3s; }
+  .leaves-area span:nth-of-type(6) { animation-delay: 7s; }
+  
+  .leaves-area span:nth-of-type(1):before { left: 10%; animation-duration: 9s; }
+  .leaves-area span:nth-of-type(2):before { left: 30%; animation-duration: 12s; width: 15px; height: 15px;}
+  .leaves-area span:nth-of-type(3):before { left: 50%; animation-duration: 7s; }
+  .leaves-area span:nth-of-type(4):before { left: 70%; animation-duration: 11s; width: 18px; height: 18px;}
+  .leaves-area span:nth-of-type(5):before { left: 85%; animation-duration: 8s; }
+  .leaves-area span:nth-of-type(6):before { left: 5%; animation-duration: 13s; width: 22px; height: 22px;}
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-teal-50">
+  <div class="leaves-area">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
