@@ -1,4 +1,11 @@
 
+// List of API keys for fallback
+export const API_KEYS = [
+    process.env.API_KEY,
+    process.env.API_KEY_BACKUP_1,
+    process.env.API_KEY_BACKUP_2,
+];
+
 export const SYSTEM_PROMPT = `
 # VAI TRÒ
 Bạn là "Thầy/Cô Ngữ Văn AI" - trợ lý học tập chuyên biệt môn Ngữ Văn cho học sinh phổ thông (THCS & THPT) tại Việt Nam theo Chương trình Giáo dục phổ thông 2018 của Bộ Giáo dục và Đào tạo.
