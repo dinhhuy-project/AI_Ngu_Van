@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ChatInterface from './components/ChatInterface';
 import { MenuIcon } from './components/IconComponents';
+import GuideModal from './components/GuideModal';
 
 const App: React.FC = () => {
   const [isHistoryPanelOpen, setIsHistoryPanelOpen] = useState(false);
+  const [isGuideModalOpen, setIsGuideModalOpen] = useState(false);
 
   // Automatically open the history panel on larger screens on initial load
   useEffect(() => {
@@ -20,13 +22,21 @@ const App: React.FC = () => {
           <h1 className="text-xl md:text-2xl font-bold text-white [text-shadow:0px_2px_4px_rgba(0,0,0,0.6)]">
             Thầy/Cô Ngữ Văn AI 📚
           </h1>
-          <button
-            onClick={() => setIsHistoryPanelOpen(true)}
-            className="p-2 text-white md:hidden"
-            aria-label="Mở lịch sử trò chuyện"
-          >
-            <MenuIcon className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsGuideModalOpen(true)}
+              className="px-4 py-2 bg-slate-800/70 text-white rounded-lg text-sm font-semibold hover:bg-slate-900/80 transition-colors backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-white"
+            >
+              Giới thiệu & Hướng dẫn
+            </button>
+            <button
+              onClick={() => setIsHistoryPanelOpen(true)}
+              className="p-2 text-white md:hidden"
+              aria-label="Mở lịch sử trò chuyện"
+            >
+              <MenuIcon className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </header>
       <main className="flex-1 overflow-hidden">
@@ -35,6 +45,7 @@ const App: React.FC = () => {
           setIsHistoryPanelOpen={setIsHistoryPanelOpen}
         />
       </main>
+      <GuideModal isOpen={isGuideModalOpen} onClose={() => setIsGuideModalOpen(false)} />
     </div>
   );
 };

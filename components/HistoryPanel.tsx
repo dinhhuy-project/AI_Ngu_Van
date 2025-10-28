@@ -67,7 +67,7 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({
         </nav>
       </div>
       <div className="p-4 border-t border-slate-200 text-xs text-center text-slate-500">
-        Người phát triển Bùi Thị Thu Hằng, GV trường THCS Vũ Hội, Thư Vũ, Hưng Yên
+        Phát triển bởi: GV Bùi Thị Thu Hằng và nhóm tin học trường THCS Vũ Hội xã Thư Vũ tỉnh Hưng Yên
       </div>
     </div>
   );
