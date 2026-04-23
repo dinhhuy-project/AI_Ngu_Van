@@ -212,7 +212,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
 
   const LoadingIndicator: React.FC = () => (
     <div className="flex items-start gap-3 my-4 justify-start">
-      <img src="../assets/teacher.png" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+      <img src="../public/teacher.png" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
       <div className="max-w-xs md:max-w-md lg:max-w-2xl p-4 rounded-2xl bg-slate-100 text-slate-800 border border-slate-200 rounded-bl-none">
         <div className="flex items-center justify-center space-x-1">
           <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
