@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChatMessage } from '../types';
-import '../public/teacher.png';
 
 // Generic file icon for PDFs and other non-image files
 const FileIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -67,7 +66,7 @@ const Message: React.FC<MessageProps> = ({ message }) => {
   return (
     <div className={messageContainerClasses}>
       {!isUser && (
-        <img src="../public/teacher.png" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+        <img src="/teacher.png" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
       )}
       <div className={messageBubbleClasses}>
         {message.attachment && <AttachmentDisplay attachment={message.attachment} />}
