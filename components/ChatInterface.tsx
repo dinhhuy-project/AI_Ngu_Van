@@ -40,7 +40,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
       const storedActiveId = localStorage.getItem('activeConversationId');
       if (storedConversations) {
         const parsedConversations: Conversation[] = JSON.parse(storedConversations);
-        if(parsedConversations.length > 0){
+        if (parsedConversations.length > 0) {
           setConversations(parsedConversations);
           if (storedActiveId && parsedConversations.some(c => c.id === storedActiveId)) {
             setActiveConversationId(storedActiveId);
@@ -96,9 +96,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
         sender: 'user',
         ...(attachment && { attachment }),
       };
-  
+
       const isNewConversation = activeConversation.messages.length === 1;
-      const newTitle = (text || file?.name || "Cuộc trò chuyện mới").substring(0,50);
+      const newTitle = (text || file?.name || "Cuộc trò chuyện mới").substring(0, 50);
 
       const updatedConversations = conversations.map(convo => {
         if (convo.id === activeConversationId) {
@@ -115,15 +115,15 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
 
       try {
         const currentMessages = updatedConversations.find(c => c.id === activeConversationId)?.messages || [];
-        
+
         const aiResponseText = await sendMessageToAI(currentMessages);
         const aiMessage: ChatMessage = {
           id: crypto.randomUUID(),
           text: aiResponseText,
           sender: 'ai',
         };
-        
-        setConversations(prevConvos => 
+
+        setConversations(prevConvos =>
           prevConvos.map(convo => {
             if (convo.id === activeConversationId) {
               return { ...convo, messages: [...convo.messages, aiMessage] };
@@ -131,7 +131,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
             return convo;
           })
         );
-  
+
       } catch (error) {
         console.error(error);
         const errorMessage: ChatMessage = {
@@ -139,7 +139,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
           text: 'Rất xin lỗi, đã có lỗi xảy ra. Em vui lòng thử lại sau nhé.',
           sender: 'ai',
         };
-         setConversations(prevConvos => 
+        setConversations(prevConvos =>
           prevConvos.map(convo => {
             if (convo.id === activeConversationId) {
               return { ...convo, messages: [...convo.messages, errorMessage] };
@@ -177,8 +177,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
 
   const handleSelectConversation = (id: string) => {
     if (id !== activeConversationId) {
-        setActiveConversationId(id);
-        resetChat();
+      setActiveConversationId(id);
+      resetChat();
     }
     closePanelOnMobile();
   };
@@ -203,22 +203,22 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
         setConversations([newConvo]);
         setActiveConversationId(newConvo.id);
         resetChat();
-        return; 
+        return;
       }
     }
     setConversations(remainingConversations);
   };
-  
+
   const LoadingIndicator: React.FC = () => (
     <div className="flex items-start gap-3 my-4 justify-start">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSssxevw4Wp2v5H65K-2raSQwfTr12IN1B-Ew&s" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-        <div className="max-w-xs md:max-w-md lg:max-w-2xl p-4 rounded-2xl bg-slate-100 text-slate-800 border border-slate-200 rounded-bl-none">
-            <div className="flex items-center justify-center space-x-1">
-                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-            </div>
+      <img src="../assets/teacher.png" alt="AI Avatar" className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+      <div className="max-w-xs md:max-w-md lg:max-w-2xl p-4 rounded-2xl bg-slate-100 text-slate-800 border border-slate-200 rounded-bl-none">
+        <div className="flex items-center justify-center space-x-1">
+          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+          <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
         </div>
+      </div>
     </div>
   );
 
@@ -232,7 +232,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
           aria-hidden="true"
         />
       )}
-      
+
       {/* History Panel Container (handles mobile overlay and desktop static) */}
       <div className={`
         transition-transform duration-300 ease-in-out
@@ -241,7 +241,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ isHistoryPanelOpen, setIs
         md:static md:translate-x-0
         ${isHistoryPanelOpen ? 'md:block' : 'md:hidden'}
       `}>
-         <HistoryPanel
+        <HistoryPanel
           conversations={conversations}
           activeConversationId={activeConversationId}
           onSelectConversation={handleSelectConversation}
