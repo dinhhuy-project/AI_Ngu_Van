@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChatMessage } from '../types';
+import '../assets/teacher.png';
 
 // Generic file icon for PDFs and other non-image files
 const FileIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -35,8 +36,8 @@ const Message: React.FC<MessageProps> = ({ message }) => {
 
   const messageContainerClasses = `flex items-start gap-3 my-4 ${isUser ? 'justify-end' : 'justify-start'}`;
   const messageBubbleClasses = `max-w-xs md:max-w-md lg:max-w-2xl p-4 rounded-2xl whitespace-pre-wrap ${isUser
-      ? 'bg-blue-500 text-white rounded-br-none'
-      : 'bg-slate-100 text-slate-800 border border-slate-200 rounded-bl-none'
+    ? 'bg-blue-500 text-white rounded-br-none'
+    : 'bg-slate-100 text-slate-800 border border-slate-200 rounded-bl-none'
     }`;
 
   const AttachmentDisplay: React.FC<{ attachment: NonNullable<ChatMessage['attachment']> }> = ({ attachment }) => {
