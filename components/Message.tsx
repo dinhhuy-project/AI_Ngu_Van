@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChatMessage } from '../types';
-import '../assets/teacher.png';
+import '../public/teacher.png';
 
 // Generic file icon for PDFs and other non-image files
 const FileIcon: React.FC<{ className?: string }> = ({ className }) => (

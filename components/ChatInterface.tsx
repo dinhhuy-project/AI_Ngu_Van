@@ -5,7 +5,7 @@ import Message from './Message';
 import InputBar from './InputBar';
 import HistoryPanel from './HistoryPanel';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from './IconComponents';
-import '../assets/teacher.png';
+import '../public/teacher.png';
 
 interface ChatInterfaceProps {
   isHistoryPanelOpen: boolean;
